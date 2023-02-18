@@ -1,0 +1,37 @@
+#+VERSION: 0.1
+#+AUTHOR: Trenton MacNinch
+#+SUBTITLE: Check out the code that generated this resume at github.com/Duwareon/ResuML
+
+#+:
+
+#+STARTSECTION: Experience
+
+#+EXPERIENCE: Village Of Hope
+#+START: 2021
+#+END: 2022
+#+POINT: Lorem ipsum dolor sit amet.
+#+POINT: Lorem ipsum dolor sit amet.
+#+POINT: Lorem ipsum dolor sit amet.
+
+#+BREAK:
+
+#+STARTSECTION: Education
+
+#+EXPERIENCE: Wilfrid Laurier University
+#+SPECIALIZATION: Computer Science
+#+START: 2022
+
+#+BREAK:
+
+#+EXPERIENCE: Beamsville District Secondary School
+#+SPECIALIZATION: Computer Science
+#+START: 2017
+#+END: 2022
+#+POINT: Specialist High Skills Major in ICT
+
+#+BREAK:
+
+#+STARTSECTION: Skills:
+#+POINT: Lorem ipsum dolor sit amet.
+#+POINT: Lorem ipsum dolor sit amet.
+#+POINT: Lorem ipsum dolor sit amet.
