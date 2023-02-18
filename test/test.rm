@@ -1,27 +1,35 @@
+#+SETUP:20:14:12:14:12:30:/usr/share/fonts/vollkorn/:Vollkorn
 #+VERSION: 0.1
 #+AUTHOR: Trenton MacNinch
+#+ENDSECTION: 40
 #+SUBTITLE: Check out the code that generated this resume at github.com/Duwareon/ResuML
 
-#+:
+#+BREAK:0.8
 
 #+STARTSECTION: Experience
+#+BREAK:0.2
 
-#+EXPERIENCE: Village Of Hope
+#+EXPERIENCE: Co-op at Möbel Cabinetry
 #+START: 2021
 #+END: 2022
-#+POINT: Lorem ipsum dolor sit amet.
-#+POINT: Lorem ipsum dolor sit amet.
-#+POINT: Lorem ipsum dolor sit amet.
+#+POINT: Helped maintain mission-critical software
+#+POINT: Aided in developing a computer system designed to increase efficiency in the manufacturing process
+#+POINT: Worked closely with other programmers to accomplish these goals
 
-#+BREAK:
+#+EXPERIENCE: Volunteering at Village Of Hope
+#+START: 2020
+#+END: 2021
+#+POINT: Aided customers in locating items they required
+#+POINT: Tested and appraised vintage electronics
+
+#+BREAK:0.8
 
 #+STARTSECTION: Education
+#+BREAK:0.2
 
 #+EXPERIENCE: Wilfrid Laurier University
 #+SPECIALIZATION: Computer Science
-#+START: 2022
-
-#+BREAK:
+#+START: Sep. 2022
 
 #+EXPERIENCE: Beamsville District Secondary School
 #+SPECIALIZATION: Computer Science
@@ -29,9 +37,23 @@
 #+END: 2022
 #+POINT: Specialist High Skills Major in ICT
 
-#+BREAK:
+#+EXPERIENCE: Microsoft Office Specialist Certification
+#+SPECIALIZATION: Microsoft Excel 2016
+#+END: 2019
+#+POINT: Jazz band, Repertoire, Orchestra, BDSS Music Award
 
-#+STARTSECTION: Skills:
-#+POINT: Lorem ipsum dolor sit amet.
-#+POINT: Lorem ipsum dolor sit amet.
-#+POINT: Lorem ipsum dolor sit amet.
+#+BREAK:0.8
+
+#+STARTSECTION: Skills
+#+BREAK:0.2
+#+POINT: Well-educated in numeracy and literacy skills
+#+POINT: Experience with programming in Rust, Python, C#, Java, PHP, SQL, and HTML+CSS+Javascript
+#+POINT: High level of proficiency with many types of software (Word processing, spreadsheets, 3D modeling, digital audio workstations, Git)
+
+*#+BREAK:
+
+*#+STARTSECTION: Hobbies and Interests
+*#+BREAK:0.2
+*#+POINT: Computer Science, Math
+*#+POINT: Music performance and composition (Bass, Guitar, Piano, Synthesizers)
+*#+POINT: Audio engineering (Reaper, Cubase, Abletone)
