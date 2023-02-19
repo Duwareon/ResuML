@@ -40,12 +40,9 @@ pub fn main() {
     let sourcefile = fs::read_to_string(args[1].clone()).expect("Cannot open file");
 
     // Set up stack for loop.
-    let mut textstack: Vec<&str> = sourcefile.split('\n').collect();
-    textstack.reverse();
+    let mut startstack: Vec<&str> = sourcefile.split('\n').collect();
 
-    let firstline = textstack.pop();
-
-    // Set visual options to default.
+    // Set options to default.
     let mut titlesize: u8 = TITLESIZE;
     let mut subtitlesize: u8 = SUBTITLESIZE;
     let mut itemsize: u8 = ITEMSIZE;
@@ -55,20 +52,49 @@ pub fn main() {
     let mut fontpath: &str = FONTPATH;
     let mut fontname: &str = FONTNAME;
 
-    // Change visuals to what is specified in #+SETUP
-    // TODO: Give each setting its own command
-    if let Some(line) = firstline {
-        if line.starts_with("#+SETUP:") {
-            let values: Vec<&str> = line.split(':').collect();
-            titlesize = values[1].parse::<u8>().expect("Invalid setup parameter(s)");
-            subtitlesize = values[2].parse::<u8>().expect("Invalid setup parameter(s)");
-            itemsize = values[3].parse::<u8>().expect("Invalid setup parameter(s)");
-            sectionsize = values[4].parse::<u8>().expect("Invalid setup parameter(s)");
-            defaultsize = values[5].parse::<u8>().expect("Invalid setup parameter(s)");
-            margins = values[6].parse::<u8>().expect("Invalid setup parameter(s)");
-            fontpath = values[7];
-            fontname = values[8];
+    let mut textstack: Vec<&str> = vec![];
+
+    // Set options from file
+    while !startstack.is_empty() {
+        let nextline = startstack.pop().unwrap();
+        let splitline = nextline.split_once(":");
+
+
+        if let Some(line) = splitline {
+            let begin = line.0.trim();
+            let end = line.1.trim(); 
+
+            match begin {
+                "#+TITLESIZE" => {
+                    titlesize = end.parse::<u8>().expect("ERROR: Incorrect #+TITLESIZE");
+                }
+                "#+SUBTITLESIZE" => {
+                    subtitlesize = end.parse::<u8>().expect("ERROR: Incorrect #+UBTITLESIZE");
+                }
+                "#+ITEMSIZE" => {
+                    itemsize = end.parse::<u8>().expect("ERROR: Incorrect #+ITEMSIZE");
+                }
+                "#+SECTIONSIZE" => {
+                    sectionsize = end.parse::<u8>().expect("ERROR: Incorrect #SECTIONSIZE");
+                }
+                "#+DEFAULTSIZE" => {
+                    defaultsize = end.parse::<u8>().expect("ERROR: Incorrect #+DEFAULTSIZE");
+                }
+                "#+MARGINS" => {
+                    margins = end.parse::<u8>().expect("ERROR: Incorrect #+MARGINS");
+                }
+                "#+FONTPATH" => {
+                    fontpath = end;
+                }
+                "#+FONTNAME" => {
+                    fontname = end;
+                }
+                _ => {}
+            }
+
         }
+
+        textstack.push(nextline);
     }
 
     // Parse flags.
@@ -93,48 +119,46 @@ pub fn main() {
         let line = textstack.pop().unwrap();
 
         if line.starts_with("#+") {
-            let splitline: Vec<&str> = line.split(':').map(|s| s.trim()).collect();
-            let linestart = splitline[0];
+            //let splitline: Vec<&str> = line.split(':').map(|s| s.trim()).collect();
+            let mut splitline = line.split_once(":").expect("ERROR: Line starts with #+ but does not have :");
+            splitline.0 = splitline.0.trim();
+            splitline.1 = splitline.1.trim();
+            let linestart = splitline.0;
 
             match linestart {
                 // Write applicant name as title.
                 "#+AUTHOR" => {
                     let parstyle: Style = Style::default().with_font_size(titlesize).bold();
-                    doc.push(getpar(splitline[1], parstyle, Alignment::Center));
+                    doc.push(getpar(splitline.1, parstyle, Alignment::Center));
                 }
 
                 "#+INFO" => {
                     let parstyle: Style = Style::default();
-                    let outputtext = splitline[1]
-                        .chars()
-                        .map(|c| if c == '^' { ':' } else { c })
-                        .collect::<String>();
-
-                    doc.push(getpar(outputtext.as_str(), parstyle, Alignment::Center))
+                    doc.push(getpar(splitline.1, parstyle, Alignment::Center))
                 }
 
                 // Centered subtitle for under applicant name.
                 "#+SUBTITLE" => {
                     let parstyle: Style = Style::default().with_font_size(subtitlesize).italic();
-                    doc.push(getpar(splitline[1], parstyle, Alignment::Center))
+                    doc.push(getpar(splitline.1, parstyle, Alignment::Center))
                 }
 
                 // Write text with bullet point.
                 "#+POINT" => {
-                    doc.push(BulletPoint::new(Paragraph::new(splitline[1])).with_bullet("-"));
+                    doc.push(BulletPoint::new(Paragraph::new(splitline.1)).with_bullet("-"));
                 }
 
                 // Write section title for an experience entry.
                 "#+EXPERIENCE" => {
                     let parstyle: Style = Style::default().with_font_size(itemsize);
-                    doc.push(getpar(splitline[1], parstyle, Alignment::Left));
+                    doc.push(getpar(splitline.1, parstyle, Alignment::Left));
                 }
 
                 // Write section subtitle for experience entry.
                 // TODO: Figure out a better word than specialization.
                 "#+SPECIALIZATION" => {
                     let parstyle: Style = Style::default().italic();
-                    doc.push(getparindent(splitline[1], parstyle, 2));
+                    doc.push(getparindent(splitline.1, parstyle, 2));
                 }
 
                 // Write start and end date.
@@ -142,7 +166,7 @@ pub fn main() {
                     let parstyle: Style = Style::default();
 
                     if !textstack.is_empty() {
-                        let start = splitline[1];
+                        let start = splitline.1;
                         let nextline = textstack.pop().unwrap();
                         if nextline.starts_with("#+END:") {
                             let endsplit: Vec<&str> =
@@ -166,13 +190,13 @@ pub fn main() {
 
                 "#+END" => {
                     let parstyle: Style = Style::default();
-                    doc.push(getparindent(splitline[1], parstyle, 2))
+                    doc.push(getparindent(splitline.1, parstyle, 2))
                 }
 
                 // Set section of resume (e.g. Education, Experience, Skills).
                 "#+STARTSECTION" => {
                     let parstyle: Style = Style::default().with_font_size(sectionsize).bold();
-                    let sectiontitle = splitline[1];
+                    let sectiontitle = splitline.1;
                     doc.push(getpar(
                         format!("{sectiontitle}").as_str(),
                         parstyle,
@@ -185,7 +209,7 @@ pub fn main() {
                 // meaning the string of dashes will have to do for now.
                 "#+ENDSECTION" => {
                     let parstyle: Style = Style::default().with_font_size(titlesize).bold();
-                    let linelength = splitline[1]
+                    let linelength = splitline.1
                         .parse::<usize>()
                         .expect("ERROR: ENDSECTION with incorrect input");
                     let linestring = "-".repeat(linelength);
@@ -194,7 +218,7 @@ pub fn main() {
 
                 // Add a simple linebreak.
                 "#+BREAK" | "#+" => {
-                    let sizeresult = splitline[1].parse::<f64>();
+                    let sizeresult = splitline.1.parse::<f64>();
                     if let Ok(size) = sizeresult {
                         doc.push(Break::new(size));
                     } else {

@@ -1,6 +1,19 @@
-#+SETUP:20:14:12:14:12:30:/usr/share/fonts/vollkorn/:Vollkorn
+*#+SETUP:20:14:12:14:12:30:/usr/share/fonts/vollkorn/:Vollkorn
+#+TITLESIZE: 20
+#+SUBTITLESIZE: 14
+#+ITEMSIZE: 12
+#+SECTIONSIZE: 14
+#+DEFAULTSIZE: 12
+#+MARGINS: 30
+#+FONTPATH: /usr/share/fonts/vollkorn/
+#+FONTNAME: Vollkorn
+
+
 #+VERSION: 0.1
 #+AUTHOR: Trenton MacNinch
+#+INFO: HOME ADDRESS HERE
+#+INFO: Home phone: INSERT HERE, Cell phone: INSERT HERE
+#+INFO: Email: EMAIL HERE
 #+ENDSECTION: 40
 #+SUBTITLE: Check out the code that generated this resume at github.com/Duwareon/ResuML
 
