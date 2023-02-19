@@ -11,9 +11,10 @@
 
 #+VERSION: 0.1
 #+AUTHOR: Trenton MacNinch
-#+INFO: HOME ADDRESS HERE
-#+INFO: Home phone: INSERT HERE, Cell phone: INSERT HERE
 #+INFO: Email: EMAIL HERE
+#+INFO: HOME ADDRESS HERE
+#+INFO: HOME TOWN AND POSTAL CODE HERE
+#+INFO: Home phone: INSERT HERE, Cell phone: INSERT HERE
 #+ENDSECTION: 40
 #+SUBTITLE: Check out the code that generated this resume at github.com/Duwareon/ResuML
 
@@ -41,19 +42,19 @@
 #+BREAK:0.2
 
 #+EXPERIENCE: Wilfrid Laurier University
-#+SPECIALIZATION: Computer Science
 #+START: Sep. 2022
+#+SPECIALIZATION: Computer Science
 
 #+EXPERIENCE: Beamsville District Secondary School
-#+SPECIALIZATION: Computer Science
 #+START: 2017
 #+END: 2022
+#+SPECIALIZATION: Computer Science
 #+POINT: Specialist High Skills Major in ICT
+#+POINT: Jazz band, Repertoire, Orchestra, BDSS Music Award
 
 #+EXPERIENCE: Microsoft Office Specialist Certification
-#+SPECIALIZATION: Microsoft Excel 2016
 #+END: 2019
-#+POINT: Jazz band, Repertoire, Orchestra, BDSS Music Award
+#+SPECIALIZATION: Microsoft Excel 2016
 
 #+BREAK:0.8
 

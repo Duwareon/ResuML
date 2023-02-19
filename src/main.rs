@@ -175,14 +175,14 @@ pub fn main() {
                             doc.push(getparindent(
                                 format!("{start} - {end}").as_str(),
                                 parstyle,
-                                2,
+                                1,
                             ));
                         } else {
                             textstack.push(nextline);
                             doc.push(getparindent(
                                 format!("{start} - Present").as_str(),
                                 parstyle,
-                                2,
+                                1,
                             ))
                         }
                     }
@@ -190,7 +190,7 @@ pub fn main() {
 
                 "#+END" => {
                     let parstyle: Style = Style::default();
-                    doc.push(getparindent(splitline.1, parstyle, 2))
+                    doc.push(getparindent(splitline.1, parstyle, 1))
                 }
 
                 // Set section of resume (e.g. Education, Experience, Skills).
