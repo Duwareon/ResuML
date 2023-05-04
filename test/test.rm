@@ -1,22 +1,22 @@
-*#+SETUP:20:14:12:14:12:30:/usr/share/fonts/vollkorn/:Vollkorn
-#+TITLESIZE: 20
-#+SUBTITLESIZE: 14
-#+ITEMSIZE: 12
-#+SECTIONSIZE: 14
-#+DEFAULTSIZE: 12
+#+SETUP:20:14:12:14:12:30:/usr/share/fonts/vollkorn/:Vollkorn
+#+TITLESIZE: 18
+#+SUBTITLESIZE: 13
+#+ITEMSIZE: 11
+#+SECTIONSIZE: 11
+#+DEFAULTSIZE: 11
 #+MARGINS: 30
 #+FONTPATH: /usr/share/fonts/vollkorn/
 #+FONTNAME: Vollkorn
 
 
 #+VERSION: 0.1
-#+AUTHOR: Trenton MacNinch
+#+AUTHOR: NAME HERE
 #+INFO: Email: EMAIL HERE
-#+INFO: HOME ADDRESS HERE
-#+INFO: HOME TOWN AND POSTAL CODE HERE
-#+INFO: Home phone: INSERT HERE, Cell phone: INSERT HERE
+#+INFO: ADDRESS HERE
+#+INFO: CITY HERE
+#+INFO: Cell phone: PHONE # HERE
 #+ENDSECTION: 40
-#+SUBTITLE: Check out the code that generated this resume at github.com/Duwareon/ResuML
+#+SUBTITLE: Check out my portfolio at github.com/Duwareon
 
 #+BREAK:0.8
 
@@ -35,6 +35,7 @@
 #+END: 2021
 #+POINT: Aided customers in locating items they required
 #+POINT: Tested and appraised vintage electronics
+#+POINT: Moved merchandise for retail location
 
 #+BREAK:0.8
 
@@ -64,7 +65,10 @@
 #+POINT: Experience with programming in Rust, Python, C#, Java, PHP, SQL, and HTML+CSS+Javascript
 #+POINT: High level of proficiency with many types of software (Word processing, spreadsheets, 3D modeling, digital audio workstations, Git)
 
-*#+BREAK:
+#+BREAK:0.7
+
+#+SUBTITLE: References and university transcript available on request.
+
 
 *#+STARTSECTION: Hobbies and Interests
 *#+BREAK:0.2
